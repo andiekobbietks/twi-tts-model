@@ -1,5 +1,3 @@
-# FILE: /twi-tts-model/twi-tts-model/scripts/select_model.py
-
 import os
 import json
 import torch

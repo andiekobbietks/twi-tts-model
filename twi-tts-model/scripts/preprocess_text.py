@@ -1,5 +1,3 @@
-# FILE: /twi-tts-model/twi-tts-model/scripts/preprocess_text.py
-
 import os
 import re
 import json

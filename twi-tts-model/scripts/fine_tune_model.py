@@ -1,5 +1,3 @@
-# FILE: /twi-tts-model/twi-tts-model/scripts/fine_tune_model.py
-
 import torch
 from transformers import AfroLMTokenizer, AfroLMModel
 from transformers import TTSModel, Trainer, TrainingArguments
@@ -38,6 +36,11 @@ def fine_tune_tts_model():
 
     # Fine-tune the model
     trainer.train()
+
+    # Save the fine-tuned model
+    model_save_path = './models/fine_tuned/twi_tts_model.pth'
+    torch.save(tts_model.state_dict(), model_save_path)
+    print(f'Model saved to {model_save_path}')
 
 if __name__ == "__main__":
     fine_tune_tts_model()

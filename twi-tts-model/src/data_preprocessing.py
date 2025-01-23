@@ -1,5 +1,3 @@
-# Contents of /twi-tts-model/twi-tts-model/src/data_preprocessing.py
-
 import os
 import re
 import numpy as np
@@ -45,3 +43,14 @@ def load_raw_data(input_path: str) -> str:
     # Load raw text data from a file
     with open(input_path, 'r', encoding='utf-8') as file:
         return file.read()
+
+def preprocess_text(text: str) -> str:
+    text = normalize_text(text)
+    text = convert_numbers_to_words(text)
+    text = restore_diacritics(text)
+    return text
+
+def save_processed_data(data: List[str], output_path: str):
+    with open(output_path, 'w', encoding='utf-8') as file:
+        for line in data:
+            file.write(line + '\n')
