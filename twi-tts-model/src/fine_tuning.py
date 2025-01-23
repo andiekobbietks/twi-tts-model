@@ -13,14 +13,21 @@ def fine_tune_model(pretrained_model, twi_data, afroLM_embeddings, epochs=10, le
     - fine_tuned_model: The fine-tuned TTS model.
     """
     # Set up the training loop
+    optimizer = torch.optim.Adam(pretrained_model.parameters(), lr=learning_rate)
+    criterion = torch.nn.MSELoss()
+
     for epoch in range(epochs):
-        # Implement training logic here
-        pass
+        for inputs, targets in twi_data:
+            optimizer.zero_grad()
+            outputs = pretrained_model(inputs, afroLM_embeddings)
+            loss = criterion(outputs, targets)
+            loss.backward()
+            optimizer.step()
+        print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.4f}')
 
     # Save the fine-tuned model
     fine_tuned_model_path = "models/fine_tuned/fine_tuned_twi_tts_model.pt"
-    # Save the model (pseudo code)
-    # torch.save(fine_tuned_model.state_dict(), fine_tuned_model_path)
+    torch.save(pretrained_model.state_dict(), fine_tuned_model_path)
 
     return fine_tuned_model_path
 
@@ -35,6 +42,6 @@ def load_fine_tuned_model(model_path):
     - fine_tuned_model: The loaded fine-tuned TTS model.
     """
     # Load the model (pseudo code)
-    # fine_tuned_model = YourModelClass()
-    # fine_tuned_model.load_state_dict(torch.load(model_path))
+    fine_tuned_model = YourModelClass()
+    fine_tuned_model.load_state_dict(torch.load(model_path))
     return fine_tuned_model
