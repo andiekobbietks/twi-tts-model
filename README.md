@@ -43,3 +43,24 @@ This project aims to create a Twi text-to-speech (TTS) model by leveraging AfroL
    - Implement the `preprocess_text` function in `data_preprocessing.py` to normalize text, convert numbers, and restore diacritics.
    - Implement the `fine_tune_model` function in `fine_tuning.py` to load data, initialize the model, and fine-tune it.
    - Implement the `evaluate_model` function in `model_selection.py` to load models, evaluate them, and select the best one.
+
+## Compute and Data Requirements for Training the Model
+Training a complex TTS model requires significant compute and data resources. Here are the key requirements:
+
+### Compute Requirements
+- **GPU**: A powerful GPU is essential for training deep learning models efficiently. Recommended GPUs include NVIDIA Tesla V100, A100, or similar.
+- **Compute Time**: Training a TTS model can take several days to weeks, depending on the complexity of the model and the size of the dataset.
+
+### Data Requirements
+- **Volume of Data**: A large volume of high-quality text and audio data is crucial for training a robust TTS model. The dataset should cover a wide range of phonetic and linguistic variations in the Twi language.
+- **Data Preprocessing**: Proper preprocessing of text and audio data is essential to ensure the quality and consistency of the training data.
+
+## Limitations of Current Compute and Data Resources
+Despite the comprehensive process outlined in this project, there are limitations to the current compute and data resources available:
+
+### Compute Limitations
+- **Limited Compute Credits**: The `cost_calculator.py` indicates a credit of $300, which translates to approximately 179.52 hours or 7.48 days of compute time. This may not be sufficient for training a complex TTS model.
+- **Resource-Intensive Dependencies**: The `requirements.txt` lists dependencies like `torch`, `transformers`, and `tensorboard`, which are resource-intensive and may require more compute power than available.
+
+### Data Limitations
+- **Insufficient Data Volume**: The `README.md` outlines a comprehensive process for data preprocessing, model selection, and fine-tuning, but does not provide details on the volume of data available, which is crucial for training a robust model.

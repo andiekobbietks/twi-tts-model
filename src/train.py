@@ -37,7 +37,7 @@ if __name__ == "__main__":
         'encoder_layers': 3,
         'mel_bins': 80,
         'learning_rate': 1e-4,
-        'epochs': 100
+        'epochs': 10  # Reduced the number of epochs to fit within the available compute time
     }
     
     train(config)
