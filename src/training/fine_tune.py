@@ -1,3 +1,5 @@
+import torch
+
 def fine_tune_model(model, training_data, afro_embeddings, epochs=10, learning_rate=0.001):
     """
     Fine-tunes the TTS model using AfroLM embeddings and the provided training data.
